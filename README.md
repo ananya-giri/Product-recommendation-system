@@ -1,4 +1,4 @@
-# 🌱 Spearmint Recs — AI Product Recommendation System
+# 🌱 SmartCart Recs — AI Product Recommendation System
 
 An impressive, high-fidelity React application that displays an interactive product catalog and utilizes an AI-powered recommendation system to match custom natural language shopping preferences (e.g., *"I want a phone under $500"* or *"wireless headphones with active noise cancellation"*).
 

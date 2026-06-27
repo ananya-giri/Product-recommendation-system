@@ -18,7 +18,7 @@ export default function Header({
           <Sparkles size={20} />
         </div>
         <div>
-          <span className="logo-text">Spearmint</span>
+          <span className="logo-text">SmartCart</span>
           <span className="logo-badge" style={{ marginLeft: "0.5rem" }}>Recs</span>
         </div>
       </div>

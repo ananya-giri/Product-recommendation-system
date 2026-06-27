@@ -9,7 +9,7 @@ import { getAIRecommendations } from "./utils/aiEngine";
 import { HelpCircle, Sparkles, ShoppingBag, X, Info, Plus, Minus, Trash2, ArrowUpDown } from "lucide-react";
 
 /**
- * App is the core coordinator for Spearmint Recs.
+ * App is the core coordinator for SmartCart Recs.
  * It manages:
  * - Environment variables and local settings configs
  * - Mock shopping cart & drawer overlays
@@ -57,7 +57,7 @@ export default function App() {
     // 1. Check Vite Environment Variable first (best practice)
     const envKey = import.meta.env.VITE_GEMINI_API_KEY;
     // 2. Fallback to LocalStorage UI configuration
-    const savedKey = localStorage.getItem("spearmint_api_key");
+    const savedKey = localStorage.getItem("smartcart_api_key");
 
     if (envKey) {
       setApiKey(envKey);
@@ -73,7 +73,7 @@ export default function App() {
     }
 
     // Load search history
-    const savedHistory = localStorage.getItem("spearmint_query_history");
+    const savedHistory = localStorage.getItem("smartcart_query_history");
     if (savedHistory) {
       try {
         setSearchHistory(JSON.parse(savedHistory));
@@ -87,11 +87,11 @@ export default function App() {
   const handleSaveApiKey = (newKey) => {
     setApiKey(newKey);
     if (newKey) {
-      localStorage.setItem("spearmint_api_key", newKey);
+      localStorage.setItem("smartcart_api_key", newKey);
       setEngineUsed("ai");
       showToast("API Configuration saved. Gemini AI Engine enabled!");
     } else {
-      localStorage.removeItem("spearmint_api_key");
+      localStorage.removeItem("smartcart_api_key");
       setEngineUsed("local");
       showToast("API Configuration cleared. Reverted to Local Engine fallback.", "warning");
     }
@@ -109,7 +109,7 @@ export default function App() {
     setSearchHistory(prev => {
       const filtered = prev.filter(q => q.toLowerCase() !== trimmedQuery.toLowerCase());
       const newHistory = [trimmedQuery, ...filtered].slice(0, 6);
-      localStorage.setItem("spearmint_query_history", JSON.stringify(newHistory));
+      localStorage.setItem("smartcart_query_history", JSON.stringify(newHistory));
       return newHistory;
     });
 
@@ -150,7 +150,7 @@ export default function App() {
 
   const handleClearHistory = () => {
     setSearchHistory([]);
-    localStorage.removeItem("spearmint_query_history");
+    localStorage.removeItem("smartcart_query_history");
     showToast("Search history log cleared", "info");
   };
 
@@ -187,7 +187,7 @@ export default function App() {
   };
 
   const handleCheckout = () => {
-    alert("Thank you for testing the Spearmint cart demo! This mock transaction was successful.");
+    alert("Thank you for testing the SmartCart cart demo! This mock transaction was successful.");
     setCart([]);
     setIsCartOpen(false);
     showToast("Transaction completed and cart cleared!");
@@ -379,7 +379,7 @@ export default function App() {
         flexWrap: "wrap",
         gap: "1rem"
       }}>
-        <span>&copy; 2026 Spearmint Recs Shopping Assistant. All rights reserved.</span>
+        <span>&copy; 2026 SmartCart Recs Shopping Assistant. All rights reserved.</span>
         <div style={{ display: "flex", gap: "1rem" }}>
           <a href="#" style={{ color: "inherit", textDecoration: "none" }} onClick={(e) => {e.preventDefault(); setIsSettingsOpen(true);}}>API Settings</a>
           <span>&middot;</span>
